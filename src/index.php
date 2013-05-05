@@ -1,4 +1,4 @@
 <?php
 
-require_once 'app/StudentManagment.php';
-StudentManagment::getInstance()->run($_REQUEST);
+require_once 'app/StudentManagement.php';
+StudentManagement::getInstance()->run($_REQUEST);

@@ -1,5 +1,10 @@
 <?php
+namespace User\Controller;
+use Core\Controller;
 
-class User_Controller_Index extends Core_Controller_Abstract
-{	
+class Index extends \Core\Controller\ControllerAbstract
+{
+    public function indexAction($request)
+    {
+    }
 }
