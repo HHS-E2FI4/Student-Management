@@ -4,7 +4,6 @@
  * TODO moving library to /Core/Lib/
  */
 require_once 'app/lib/HTTPRequest.php';
-require_once 'app/lib/BaseException.php';
 require_once 'app/lib/SplClassLoader.php';
 
 /**
@@ -110,19 +109,19 @@ final class StudentManagement
 		
 		try {
 			$module = $request->getModule();
-		} catch( BaseException $e ) {
+		} catch( Exception $e ) {
 		    die('Error - Module not found');
 		}
 		
 		try {
 			$controller = $request->getController();
-		} catch( BaseException $e ) {
+		} catch( Exception $e ) {
 			$controller = 'index';
 		}
 		
 		try {
 			$action = $request->getAction().'Action';
-		} catch( BaseException $e ) {
+		} catch( Exception $e ) {
 			$action = 'index'.'Action';
 		}
 		self::getController( $module, $controller )->$action($request);	

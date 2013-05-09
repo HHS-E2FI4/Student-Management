@@ -57,7 +57,7 @@ final class HTTPRequest
 	{
 		$node = strtolower($node);
 		if( !isset($this->data[$node]) ) {
-			throw new BaseException('Key has not been found');
+			throw new Exception('Key has not been found');
 		}
 		return $this->data[$node];
 	}
