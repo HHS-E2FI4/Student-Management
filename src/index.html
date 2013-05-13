@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test</title>
+    <style type="text/css">
+     .forms {
+        float:left;
+        display:block;
+        width:6em;
+     }
+    </style>
+</head>
+<body>
+ <form action="index.php?module=student&controller=test&action=debug" method="POST">
+    <fieldset>
+        <legend>Student</legend>
+            <label for="data[prename]" class="forms">Prename</label>
+            <input type="text" name="data[prename]"/>
+            <br />
+            
+            <label for="data[surname]" class="forms">Surname</label>
+            <input type="text" name="data[surname]"/>
+            <br />
+            
+            <label for="data[birthdate]" class="forms">Birthdate</label>
+            <input type="text" name="data[birthdate]"/>
+            <br />
+            
+            <label for="data[email]" class="forms">E-Mail</label>
+            <input type="text" name="data[email]"/>
+            <br />    
+                    
+            <label for="data[course]" class="forms">Course</label>
+            <input type="text" name="data[course]"/>
+            <br />            
+            
+            <label for="male">Male</label>
+            <input type="radio" name="data[gender]" id="male" value="m">
+            
+            <label for="female">Female</label>
+            <input type="radio" name="data[gender]" id="female" value="f">
+    </fieldset>
+    <input type="submit" />
+ </form>
+</body>
+</html>
