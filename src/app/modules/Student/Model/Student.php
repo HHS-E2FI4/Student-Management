@@ -100,7 +100,7 @@ class Student extends \Core\Model\ModelAbstract
         ) VALUES ('.implode(',',$values).');';
         
         
-        echo "SQL Query: $sql";
+        return $sql;
     }
       
     
