@@ -20,6 +20,14 @@ final class StudentManagement
      * @var    SplAutoloader $autoloader;
      */
     private static $autoloader = null;
+    
+    
+    /**
+     * @desc   config
+     * @var    SimpleXMLElement $config
+     */
+    private static $config = null;
+    
 
 
     /**
@@ -50,6 +58,9 @@ final class StudentManagement
             self::$autoloader = new SplClassLoader();
             self::$autoloader->register();
             self::$autoloader->setIncludePath('app/modules');
+        }
+        if( null === self::$config) {
+            self::$config = StudentManagement::loadConfig();
         }
         return self::$instance;
     }
@@ -90,7 +101,24 @@ final class StudentManagement
         $controller = $request['controller'];
         $action = $request['action'].'Action';
         
-        self::getController( $module, $controller )->$action($request['data']);
+        $data = (isset($request['data']))?$request['data']:array('data'=>null);
+        self::getController( $module, $controller )->$action( $data );
+    }
+    
+    private static function loadConfig()
+    {
+        $xml = file_get_contents( 'etc/config.xml' );
+        return new SimpleXMLElement( $xml );
+    }
+    
+    public function getConfig( $path )
+    {
+        $entry = self::$config->xpath( $path );
+        $result = array();
+        foreach( $entry as $item ) {
+            $result[] = (string)$item;
+        }
+        return implode($result);
     }
 
     /**

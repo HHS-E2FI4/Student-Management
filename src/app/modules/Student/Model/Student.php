@@ -10,6 +10,7 @@ class Student extends \Core\Model\ModelAbstract
     private $email = null;
     private $gender = null;
     private $course = null;
+    private $tan = null;
 
     public function __construct()
     {
@@ -51,6 +52,11 @@ class Student extends \Core\Model\ModelAbstract
         return $this;
     }
     
+    public function setTan($tan)
+    {
+        $this->tan = $tan;
+        return $this;
+    }
     
     public function getPrename()
     {
@@ -82,25 +88,32 @@ class Student extends \Core\Model\ModelAbstract
         return $this->course;
     }
     
-    public function save() {
-        
-        $values = array(
-                md5($this->getEmail()),
-                $this->getSurname().$this->getPrename()[0].$this->getPrename()[1],
-                '12345678901234567890',
-                $this->getSurname(),
-                $this->getPrename(),
-                $this->getGender(),
-                $this->getEmail(),
-                $this->getBirthdate(),
-                $this->getCourse(),
-            );
-        
-        $sql = 'INSERT INTO student( sid, username, tan, surname, prename, gender, email, birthday, course
-        ) VALUES ('.implode(',',$values).');';
-        
-        
-        return $sql;
+    public function getTan()
+    {
+        return $this->tan;
+    }
+    
+    public function save()
+    {
+        $entry = array(
+                        'table' => 'student',
+                        'items' => array(
+                            'username'   => array( 'value' => 'php!->'.'computeUsername',
+                                                   'param' => array( 
+                                                               'surname' => $this->getSurname(),
+                                                               'prename' => $this->getPrename()
+                                                              )
+                                                 ),
+                            'prename'    => array( 'value' => 'raw!->'.$this->getPrename() ),
+                            'surname'    => array( 'value' => 'raw!->'.$this->getSurname() ),
+                            'email'      => array( 'value' => 'raw!->'.$this->getEmail() ),
+                            'birthdate'  => array( 'value' => 'raw!->'.$this->getBirthdate() ),
+                            'gender'     => array( 'value' => 'raw!->'.$this->getGender() ),
+                            'course'     => array( 'value' => 'raw!->'.$this->getCourse() ),
+                       ),
+                    );
+        $resource = \StudentManagement::getModel('Student', 'Resource');
+        $resource->write( $entry );
     }
       
     

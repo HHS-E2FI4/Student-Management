@@ -6,7 +6,8 @@ Vagrant.configure("2") do |config|
   config.vm.box_url = "http://0ptr.org/vagrant/lamp.box"
 
   config.vm.network :forwarded_port, guest: 80, host: 8080
-
+  config.vm.network :forwarded_port, guest: 3306, host: 3366
+  
   config.vm.synced_folder "src", "/var/www"
 
   config.vm.provider :virtualbox do |vb|

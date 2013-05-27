@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<config>
+    <pdo>
+        <engine>mysql</engine>
+        <host>localhost</host>
+        <database>schooldatabase</database>
+        <user>root</user>
+        <pass>vagrant</pass>
+    </pdo>
+</config>

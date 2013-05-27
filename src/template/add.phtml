@@ -11,9 +11,9 @@
     </style>
 </head>
 <body>
- <form action="index.php?module=student&controller=test&action=add" method="POST">
+ <!-- <form action="index.php?module=student&controller=index&action=add" method="POST">  -->
  <!-- pretty-url -->
- <!-- <form action="student/test/debug" method="POST"> -->
+<form action="/student/index/add" method="POST">
     <fieldset>
         <legend>Student</legend>
             <label for="data[prename]" class="forms">Prename</label>
@@ -36,11 +36,16 @@
             <input type="text" name="data[course]"/>
             <br />            
             
+            <label for="tan" class="forms">TAN</label>
+            <input type="text" name="data[tan]"/>
+            <br />            
+            
             <label for="male">Male</label>
             <input type="radio" name="data[gender]" id="male" value="m">
             
             <label for="female">Female</label>
             <input type="radio" name="data[gender]" id="female" value="f">
+            
     </fieldset>
     <input type="submit" />
  </form>

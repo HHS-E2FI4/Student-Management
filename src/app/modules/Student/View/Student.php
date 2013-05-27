@@ -2,6 +2,6 @@
 namespace Student\View;
 use Core\View;
 
-class Test extends \Core\View\ViewAbstract
+class Student extends \Core\View\ViewAbstract
 {
 }
